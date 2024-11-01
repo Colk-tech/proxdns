@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  unbound-nextdns:
+    build: .
+    container_name: unbound-nextdns
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./unbound.conf:/etc/unbound/unbound.conf:ro
+      - ./logs/unbound.log:/var/log/unbound.log"
+    restart: unless-stopped
